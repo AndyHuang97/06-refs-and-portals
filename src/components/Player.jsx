@@ -4,7 +4,7 @@ import { useState, useRef } from "react";
 
 export default function Player() {
   const playerName = useRef(); // playerName.current returns the input element
-  const [enteredPlayerName, setEnteredPlayerName] = useState("");
+  const [enteredPlayerName, setEnteredPlayerName] = useState();
 
   function handleClick() {
     setEnteredPlayerName(playerName.current.value);
