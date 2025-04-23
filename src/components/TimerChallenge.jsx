@@ -1,4 +1,5 @@
 import { useState, useRef } from "react";
+import ResultModal from "./ResultModal";
 
 //let timer;
 // This is a global variable that will be used to store the timer ID returned by setTimeout.
@@ -26,20 +27,22 @@ export default function TimerChallenge({ title, targetTime }) {
   }
 
   return (
-    <section class="challenge">
-      <h2>{title}</h2>
-      {timerExpired && <p>You lost!</p>}
-      <p className="challenge-time">
-        {targetTime} second{targetTime > 1 ? "s" : ""}
-      </p>
-      <p>
-        <button onClick={timerStarted ? handleStop : handleStart}>
-          {timerStarted ? "Stop" : "Start"} Challenge
-        </button>
-      </p>
-      <p className={timerStarted ? "active" : undefined}>
-        {timerStarted ? "Timer is running ..." : "Timer inactive"}
-      </p>
-    </section>
+    <>
+      {timerExpired && <ResultModal targetTime={targetTime} result="lost" />}
+      <section class="challenge">
+        <h2>{title}</h2>
+        <p className="challenge-time">
+          {targetTime} second{targetTime > 1 ? "s" : ""}
+        </p>
+        <p>
+          <button onClick={timerStarted ? handleStop : handleStart}>
+            {timerStarted ? "Stop" : "Start"} Challenge
+          </button>
+        </p>
+        <p className={timerStarted ? "active" : undefined}>
+          {timerStarted ? "Timer is running ..." : "Timer inactive"}
+        </p>
+      </section>
+    </>
   );
 }
