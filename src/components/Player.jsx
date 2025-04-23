@@ -8,6 +8,9 @@ export default function Player() {
 
   function handleClick() {
     setEnteredPlayerName(playerName.current.value);
+    // This is imperative programming, which is not the React way of doing things (declarative)
+    // It's better to avoid using refs for DOM manipulation in React, but in this case, it's acceptable.
+    playerName.current.value = ""; // clear the input field.
   }
 
   return (
